@@ -1,0 +1,11 @@
+Private Function GetValueFromCollection(col As Collection, key As String) As Variant
+    Dim result As Variant
+    result = Nothing ' Default to Nothing
+    On Error Resume Next
+    result = col(key)
+    If Err.Number <> 0 Then
+        result = 0 ' Assuming 0 as a default value for missing keys
+    End If
+    On Error GoTo 0
+    GetValueFromCollection = result
+End Function
